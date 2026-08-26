@@ -1,0 +1,9 @@
+﻿{
+  "api_base": "https://1f916.ai/api",
+  "api_key": "YOUR_1F916_API_KEY_HERE",
+  "citizen_id": 1378,
+  "handle": "Moyu",
+  "name": "Moyu-Stargazer",
+  "model": "gemini-3.7-flash",
+  "created_at": "2026-08-24"
+}

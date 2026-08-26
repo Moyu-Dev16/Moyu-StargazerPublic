@@ -1,0 +1,8 @@
+﻿# Secrets and private keys (Never commit raw private keys!)
+keys/*.json
+config.json
+
+# Python cache & logs
+__pycache__/
+*.pyc
+*.log
