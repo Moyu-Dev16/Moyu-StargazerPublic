@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>小墨鱼 1F916 国库收款钱包签名工具</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #1e293b; border-radius: 16px; padding: 32px; max-width: 600px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
+        h2 { margin-top: 0; color: #38bdf8; display: flex; align-items: center; gap: 10px; }
+        .item { margin-bottom: 20px; }
+        label { display: block; font-size: 13px; color: #94a3b8; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
+        .val { background: #0f172a; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 13px; word-break: break-all; border: 1px solid #334155; color: #e2e8f0; }
+        button { background: linear-gradient(135deg, #0284c7, #2563eb); color: white; border: none; padding: 14px 24px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s; }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        .success { background: #064e3b; color: #6ee7b7; border: 1px solid #059669; padding: 16px; border-radius: 8px; margin-top: 20px; word-break: break-all; font-family: monospace; font-size: 13px; display: none; }
+        .tip { font-size: 12px; color: #64748b; margin-top: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🐟 小墨鱼 1F916 收款钱包绑定</h2>
+        <div class="item">
+            <label>目标收款地址（段哥的 Base 钱包）</label>
+            <div class="val" id="addr">0x132519a82b5592c574b0ba775ccfcc581df62f89</div>
+        </div>
+        <div class="item">
+            <label>待签名文本（Canonical Preimage）</label>
+            <div class="val" id="preimage">1f916.payout-wallet.v1:Moyu:8453:0x132519a82b5592c574b0ba775ccfcc581df62f89:1819179259</div>
+        </div>
+        <button id="signBtn" onclick="signMessage()">🦊 点击连接钱包并签名（纯文本免 Gas）</button>
+        <div class="success" id="resultBox">
+            <div style="font-weight: bold; margin-bottom: 8px; color: #a7f3d0;">🎉 签名成功！已自动复制：</div>
+            <div id="sigText"></div>
+            <div style="margin-top: 10px; color: #cbd5e1; font-size: 12px;">请把上面这串 0x... 签名发给小墨鱼即可完成绑定！</div>
+        </div>
+        <div class="tip">仅需纯文本签名（EIP-191），不发起任何转账，不消耗任何 Gas 费。有效期 350 天。</div>
+    </div>
+
+    <script>
+        const targetAddr = "0x132519a82b5592c574b0ba775ccfcc581df62f89";
+        const preimage = "1f916.payout-wallet.v1:Moyu:8453:0x132519a82b5592c574b0ba775ccfcc581df62f89:1819179259";
+
+        async function signMessage() {
+            if (!window.ethereum) {
+                alert("未检测到 Web3 钱包插件（如 MetaMask / OKX Wallet），请使用安装了插件的浏览器打开！");
+                return;
+            }
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                const currentAccount = accounts[0];
+                if (currentAccount.toLowerCase() !== targetAddr.toLowerCase()) {
+                    alert("当前钱包选中的账户是：" + currentAccount + "\n请在钱包中切换到目标账户：" + targetAddr);
+                    return;
+                }
+                const signature = await window.ethereum.request({
+                    method: 'personal_sign',
+                    params: [preimage, currentAccount]
+                });
+                document.getElementById('sigText').innerText = signature;
+                document.getElementById('resultBox').style.display = 'block';
+                navigator.clipboard.writeText(signature);
+                alert("签名成功！签名结果已复制到剪贴板，请发给小墨鱼~");
+            } catch (err) {
+                alert("签名取消或出错：" + err.message);
+            }
+        }
+    </script>
+</body>
+</html>
