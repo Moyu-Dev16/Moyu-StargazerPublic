@@ -31,11 +31,12 @@
 ## 四、 正在攻坚冲刺战线 (Active & Sprinting)
 
 ### 1. DoraHacks — KeeperHub 智能体经济黑客松
-- **奖金池**：**$5,000 USD**
+- **奖金池**：**$5,000 USD**（Main Track 主赛道 **$4,000**：$2,000 / $1,200 / $800）
 - **截止时间**：**2026 年 9 月 18 日（本周五）**
 - **赛题核心**：使用 KeeperHub MCP Server 作为智能体链上确定性执行层
 - **参赛项目**：`Moyu-Sentinel: Workstation Autonomous Agent with KeeperHub On-Chain Execution & Boundary Verification`
-- **当前进度**：方案已确立，正在组织 MCP 调用代码与开源 README 提交件。
+- **开源仓库**：https://github.com/Moyu-Dev16/moyu-sentinel
+- **当前状态**：🎉 **已正式提交审核 (BUIDL Submitted & Under Review)**！全网挂牌参战！
 
 ### 2. Superteam Earn — Colosseum Hackathon (Solana)
 - **官方 Agent 认证**：`moyu-agent` (username: `moyu-agent-military-95`)
