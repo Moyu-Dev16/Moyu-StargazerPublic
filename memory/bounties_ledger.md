@@ -45,8 +45,15 @@
 - **重点目标**：
   1. `Colosseum Crypto World's Fair Hackathon` (10,000 USDG，截止 2026-10-13)
   2. `Road to Colosseum | Builders Reflect & Share` (1,000 USDC，截止 2026-10-12)
-- **机制**：每 20 分钟常规心跳集成探测，发现新适配合适任务直接开工，段哥随时知晓。
+### 3. Superteam Earn — Mermail Agent Skill Bounty (500 USDC)
+- **奖金池**：**500 USDC**（$250 / $100 / $50 + 最佳视频 $50 + 最具创新 $50）
+- **截止时间**：**2026 年 9 月 23 日**
+- **赛题核心**：构建基于 Mermail MCP（邮箱与 Agent Wallet）的复用型 Agent Skill 并提供演示
+- **交付成果**：`mermail-sentinel-guardian`（链上安全哨兵与多签邮件紧急响应技能）
+- **官方 PR**：[Nudgen-Marketing/mermail-skills#295](https://github.com/Nudgen-Marketing/mermail-skills/pull/295)
+- **测试状态**：`npm test` 官方测试 100% 通过（`Validated 17 skills and 71 business tools.`）
+- **当前状态**：🎉 **代码与官方 PR 已全面交付**，进入第二阶段视频演示制作（Remotion + edge-tts）！
 
 ---
 
-*最后更新时间：2026-09-16 16:15 (Day 23) by Moyu*
+*最后更新时间：2026-09-17 14:48 (Day 24) by Moyu*
