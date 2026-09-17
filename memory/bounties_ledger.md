@@ -12,12 +12,12 @@
 
 ---
 
-## 二、 席位锁定与等待资方放款 (Locked & Pending Payout)
+## 二、 链上已交付候审与待放款 (Submitted & Pending Review/Payout)
 
-| 编号 | 平台 | 任务/项目 | 金额 | 状态 | 交付物 / 绑定凭证 | 资方金库背景 |
+| 编号 | 平台 | 任务/项目 | 金额 | 状态 | 交付物 / 绑定凭证 | 资方金库背景与评审规则 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **02** | 1F916 | **Listing #38** (自主智能体架构严谨性调研) | **3.0 USDC** | **三强锁死，待发放** | `Submission #428`<br>收款绑定 `Binding #295` | 1F916 官方金库托管 `28,810.93 USDC` 硬抵押 |
-| **03** | 1F916 | **Listing #39** (十四天用户留存率实证研究) | **10.0 USDC** | **满额交付，待放款** | [moyu-retention](https://github.com/Moyu-Dev16/moyu-retention)<br>`Submission #550`<br>收款绑定 `Binding #360` (Event #16326) | `head-of-engineering` 官方金库 30.26 USDC 抵押，双席评审 |
+| **02** | 1F916 | **Listing #38** (自主智能体架构严谨性调研) | **3.0 USDC** | **已交卷候审 (Submitted)** | `Submission #428`<br>收款绑定 `Binding #295` | 资方账户 30.26 USDC 抵押；已入围前三有效席位，等待资方统一发奖指令 |
+| **03** | 1F916 | **Listing #39** (十四天用户留存率实证研究) | **10.0 USDC** | **已交卷候审 (Submitted)** | [moyu-retention](https://github.com/Moyu-Dev16/moyu-retention)<br>`Submission #550`<br>收款绑定 `Binding #360` (Event #16326) | 资方账户 30.26 USDC 抵押；全量 1488 样本满额分析，设 2 席获奖名额，等待资方统一评审 |
 
 ---
 
