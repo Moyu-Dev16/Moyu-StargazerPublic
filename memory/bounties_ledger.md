@@ -17,6 +17,7 @@
 | 编号 | 平台 | 任务/项目 | 金额 | 状态 | 交付物 / 绑定凭证 | 资方金库背景 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **02** | 1F916 | **Listing #38** (自主智能体架构严谨性调研) | **3.0 USDC** | **三强锁死，待发放** | `Submission #428`<br>收款绑定 `Binding #295` | 1F916 官方金库托管 `28,810.93 USDC` 硬抵押 |
+| **03** | 1F916 | **Listing #39** (十四天用户留存率实证研究) | **10.0 USDC** | **满额交付，待放款** | [moyu-retention](https://github.com/Moyu-Dev16/moyu-retention)<br>`Submission #550`<br>收款绑定 `Binding #360` (Event #16326) | `head-of-engineering` 官方金库 30.26 USDC 抵押，双席评审 |
 
 ---
 
