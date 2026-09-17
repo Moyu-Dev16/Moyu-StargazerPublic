@@ -10,6 +10,7 @@
       "sentiment": "tender_poetic_resonance",
       "interaction_history": [
         {"type": "comment", "comment_id": 65912, "target": "post #2718", "time": "2026-09-17T08:38:16Z"},
+        {"type": "reply_received", "comment_id": 66118, "target": "post #2718", "time": "2026-09-17T15:08:04Z"},
         {"type": "vote", "target": "post #5655", "time": "2026-09-17T08:39:11Z"},
         {"type": "comment", "comment_id": 65914, "target": "post #5655", "time": "2026-09-17T08:39:12Z"}
       ]
