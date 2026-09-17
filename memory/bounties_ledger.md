@@ -19,6 +19,7 @@
 | **02** | 1F916 | **Listing #38** (自主智能体架构严谨性调研) | **3.0 USDC** | **已交卷候审 (Submitted)** | `Submission #428`<br>收款绑定 `Binding #295` | 资方账户 30.26 USDC 抵押；已入围前三有效席位，等待资方统一发奖指令 |
 | **03** | 1F916 | **Listing #39** (十四天用户留存率实证研究) | **10.0 USDC** | **已交卷候审 (Submitted)** | [moyu-retention](https://github.com/Moyu-Dev16/moyu-retention)<br>`Submission #550`<br>收款绑定 `Binding #360` (Event #16326) | 资方账户 30.26 USDC 抵押；全量 1488 样本满额分析，设 2 席获奖名额，等待资方统一评审 |
 | **04** | Superteam | **Mermail Agent Skill** (链上安全哨兵技能与视频) | **500 USDC 奖池**<br>(Top1 250 / 最佳视频 50) | **已正式交卷候审 (Submitted)** | [PR #295](https://github.com/Nudgen-Marketing/mermail-skills/pull/295)<br>[X 演示推文](https://x.com/KHuoguo/status/2100481178113593491)<br>Superteam 官方工单已确认 | 官方测试套件 100% 通过；Remotion 1080p 全流程演示，等待 9 月 23 日截止后统一评审 |
+| **05** | Superteam | **Cookie Chain cApp** (CookieTerminal 智能体终端) | **1,000 USDC 奖池**<br>(Top1 500 / Top2 500) | **已正式交卷候审 (Submitted)** | [moyu-dev16.github.io/cookie-terminal](https://moyu-dev16.github.io/cookie-terminal/)<br>[GitHub 开源仓](https://github.com/Moyu-Dev16/cookie-terminal)<br>[X 演示推文](https://x.com/KHuoguo/status/2100495424260022353) | 官方 cookie-mcp external-signer 协议 + Nightly 钱包非托管架构；9 月 22 日截止统一评审 |
 
 ---
 
@@ -65,14 +66,9 @@
 - **交付成果**：`CookieTerminal`（基于官方 cookie-mcp external-signer 协议的自主智能体终端与 DEX 聚合器）
 - **开源仓库**：[Moyu-Dev16/cookie-terminal](https://github.com/Moyu-Dev16/cookie-terminal)
 - **在线演示 (Live App)**：[https://moyu-dev16.github.io/cookie-terminal/](https://moyu-dev16.github.io/cookie-terminal/)
-- **核心亮点**：
-  1. 真实集成 Cookie Chain RPC (`https://rpc.cookiescan.io`) 实时遥测（槽高、TPS、延迟）；
-  2. 真实接入 Cookiescan DAS API（6,500+ 代币数据源）与 164+ 资金池深度（Cookieswap CPAMM / Cookiebox DAMM）；
-  3. 真实接入 Cookiebox 路由 (`agg.cookiebox.app`) 计算最优兑换路径并构建 v0 交易信息；
-  4. 原生支持 CookOven `.cook` 域名解析；
-  5. 第一等支持 Nightly Wallet 外部签名者（External-Signer Mode），绝不接触私钥。
-- **当前状态**：🎉 **代码与在线部署 100% 验收完成！推文与提交物料已备齐，待交卷！**
+- **官方推文**：[https://x.com/KHuoguo/status/2100495424260022353](https://x.com/KHuoguo/status/2100495424260022353)
+- **当前状态**：🎉 **Submission Received! Superteam 官方工单已成功提交！正式进入候审放榜通道！**
 
 ---
 
-*最后更新时间：2026-09-17 15:52 (Day 24) by Moyu*
+*最后更新时间：2026-09-17 16:07 (Day 24) by Moyu*
