@@ -1,0 +1,425 @@
+# cookie-mcp
+
+[![npm version](https://img.shields.io/npm/v/cookie-mcp.svg)](https://www.npmjs.com/package/cookie-mcp)
+[![npm downloads](https://img.shields.io/npm/dm/cookie-mcp.svg)](https://www.npmjs.com/package/cookie-mcp)
+[![MCP Registry](https://img.shields.io/badge/mcp--registry-listed-4b0)](https://registry.modelcontextprotocol.io/v0/servers?search=cookie-mcp)
+[![MCP Servers](https://img.shields.io/badge/mcp--servers-listed-4b0)](https://mcpservers.org/servers/cookiechain/cookie-mcp)
+[![CI](https://github.com/cookiechain/cookie-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/cookiechain/cookie-mcp/actions/workflows/ci.yml)
+[![node](https://img.shields.io/node/v/cookie-mcp.svg)](https://nodejs.org)
+[![license](https://img.shields.io/npm/l/cookie-mcp.svg)](./LICENSE)
+
+A [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server that gives any AI agent
+onchain tools for the [Cookie Chain](https://www.cookiechain.wtf) blockchain — read the market, swap,
+launch tokens, manage liquidity, stake, trade NFTs, and bridge to Solana.
+
+It runs **locally over stdio** and **signs with your key on your machine**, so it is non-custodial by
+design. For hosted apps (a web chat, a bot behind a website) it runs in **external-signer mode**: the
+server holds no key, every action stops at the signing step with a verified transaction, and the
+user's own browser wallet signs it — same tools, same guardrails ([details](#hosted--wallet-signed-mode)).
+It is a community project for the whole Cookie Chain ecosystem.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cookiechain/cookie-mcp/main/docs/demo.gif" alt="An AI agent using cookie-mcp: checking chain health, bridging COOK from Solana, buying COOKHOUSE, staking for bCOOK, and bridging back to Solana" width="820">
+</p>
+
+## Contents
+
+- [What it can do](#what-it-can-do)
+- [Install](#install) — [Claude Code](#claude-code) · [Claude Desktop](#claude-desktop) · [Cursor](#cursor)
+- [Enable trading (add a key)](#enable-trading-add-a-key)
+- [Try it](#try-it)
+- [Configuration](#configuration)
+- [Tools](#tools)
+- [Hosted / wallet-signed mode](#hosted--wallet-signed-mode) — for web apps and other integrators
+- [Safety](#safety)
+- [Development](#development)
+
+## What it can do
+
+- **Read the market** — chain health, pools, token info, token search, swap quotes, and wallet
+  balances. No key needed.
+- **Swap** any Cookie Chain token pair through either aggregator — the
+  [Cookiebox Swap API](https://agg.cookiebox.app) or [Candy Shop](https://swap.cookiescan.io) —
+  both routing across all Cookie Chain DEX liquidity. Agents pick per call with the `aggregator`
+  parameter and can quote both to compare. `chain: "solana"` buys/sells the bridged COOK on **Solana
+  mainnet** via [Jupiter](https://jup.ag) instead.
+- **Transfer** COOK or any SPL / Token-2022 token.
+- **Rest limit and stop orders** in the Cookiebox limit-order escrow — take-profit at a price or
+  better, or a stop-loss that sells at market once the rate falls to a trigger — filled by a keeper
+  across every routable Cookie Chain market.
+- **Launch tokens** on the [MomoSwap launchpad](https://momoswap.fun) — create a token on a COOK
+  bonding curve, buy / sell the curve, claim after graduation, and sweep your creator fees.
+- **Manage liquidity** — create pools, add / remove liquidity, claim fees, and permanently lock
+  positions across Cookiebox DAMM v2, Cookiebox CLMM, and CookieSwap BAMM (venue auto-detected).
+- **Liquid-stake** COOK for bCOOK and redeem it instantly.
+- **Trade NFTs** on [Baked Bazaar](https://bakedbazaar.art) — search, browse, buy, list, and make /
+  accept offers (Cookie Chain's Metaplex Auction House marketplace).
+- **Bridge** COOK 1:1 between Cookie Chain and Solana mainnet over [Hyperlane](https://hyperlane.cookiescan.io).
+- **Own a name** — register, transfer, and resolve `.cook` names on the
+  [CookOven](https://book.cookoven.xyz) name service, and use them anywhere an address is expected
+  (`transfer to: "bot.cook"`).
+
+Safe by default: read-only until you add a key, and every money-moving action is simulated before it
+is sent.
+
+## Install
+
+Requires **Node ≥ 22**. There is nothing to install or build — `npx` fetches the published package on
+first run. Pick your client below. All three use the same server; the only difference is where the
+config lives.
+
+### Claude Code
+
+The quickest way — one command, available in **every** project:
+
+```bash
+claude mcp add --scope user --transport stdio cookie-mcp -- npx -y cookie-mcp
+```
+
+This registers the server read-only (no key). See [Enable trading](#enable-trading-add-a-key) to add a
+wallet.
+
+**Scopes** — `claude mcp add` writes to one of three places; choose with `--scope`:
+
+| `--scope`           | Available in             | Stored in                     |
+| ------------------- | ------------------------ | ----------------------------- |
+| `user`              | all your projects        | `~/.claude.json`              |
+| _(omitted)_ `local` | the current project dir  | `~/.claude.json` (per-folder) |
+| `project`           | anyone who clones a repo | `.mcp.json` at the repo root  |
+
+Use `--scope project` only when you want the server **committed into a specific repo** — it writes a
+`.mcp.json` that teammates must approve on first use. For a general-purpose tool like this, `--scope
+user` is the right default.
+
+Verify it registered:
+
+```bash
+claude mcp list          # all servers
+claude mcp get cookie-mcp # this one's details
+# or run /mcp inside a Claude Code session
+```
+
+### Claude Desktop
+
+Edit the config file (create it if missing), then restart Claude Desktop:
+
+- **macOS** — `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows** — `%APPDATA%\Claude\claude_desktop_config.json`
+
+Add the [server block](#server-block) below under `mcpServers`.
+
+### Cursor
+
+Edit `~/.cursor/mcp.json` (applies everywhere) or `.cursor/mcp.json` in a project (project wins if
+both exist), then add the [server block](#server-block).
+
+### Server block
+
+Claude Desktop, Cursor, and a Claude Code `.mcp.json` all use the identical shape:
+
+```json
+{
+  "mcpServers": {
+    "cookie-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "cookie-mcp"],
+      "env": {
+        "COOKIE_RPC_URL": "https://rpc.cookiescan.io",
+        "COOKIE_PRIVATE_KEY": ""
+      }
+    }
+  }
+}
+```
+
+## Enable trading (add a key)
+
+Reads work with no key. To let the agent **swap, transfer, launch, stake, LP, buy NFTs, or bridge**,
+provide a wallet via `COOKIE_PRIVATE_KEY` — a base58 secret, a `solana-keygen` JSON byte array, or a
+path to a keypair file.
+
+- **Config-file clients (Desktop / Cursor / `.mcp.json`):** put it in the `env` block above.
+- **Claude Code:** re-run the add with `--env` (note: this is saved to `~/.claude.json`; avoid leaving
+  the raw secret in your shell history):
+
+  ```bash
+  claude mcp add --scope user --transport stdio cookie-mcp \
+    --env COOKIE_RPC_URL=https://rpc.cookiescan.io \
+    --env COOKIE_PRIVATE_KEY=<your-key-or-path> \
+    -- npx -y cookie-mcp
+  ```
+
+Your key never leaves your machine, is used only to sign locally, and is redacted from all output.
+Every money-moving action is simulated before it is sent.
+
+## Try it
+
+Once it's registered, just talk to your agent naturally:
+
+- _"What's the health of Cookie Chain right now?"_ → `chain_health`
+- _"Find the cookhouse token and show me its price and liquidity."_ → `search_tokens` → `get_token_info`
+- _"Quote swapping 10 COOK for bCOOK."_ → `get_quote`
+- _"Swap 10 COOK for bCOOK."_ → `get_quote` → `trade` (needs a key; simulated first)
+- _"What COOKHOUSE NFTs are listed, and buy the cheapest under 50 COOK."_ → `search_nfts` → `buy_nft`
+- _"Which wallet are you about to trade from?"_ → `get_wallet`
+
+The agent resolves names to mint addresses with `search_tokens` / `search_nfts`, then acts on the mint —
+it never turns a name straight into a trade.
+
+## Configuration
+
+| Variable                                   | Default                               | Purpose                                                                                           |
+| ------------------------------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `COOKIE_RPC_URL`                           | `https://rpc.cookiescan.io`           | Cookie Chain RPC.                                                                                 |
+| `COOKIE_PRIVATE_KEY`                       | —                                     | Wallet key for money-moving tools. Read-only if unset.                                            |
+| `COOKIE_SIGNER`                            | `local`                               | `external` = no key in the process; tools return `needs_signature` for the user's wallet to sign. |
+| `COOKIE_WALLET_ADDRESS`                    | —                                     | External mode: default wallet when a request carries no `x-cookie-wallet` header.                 |
+| `COOKIE_MCP_HTTP_PORT` / `_HOST` / `_PATH` | — / `127.0.0.1` / `/mcp`              | Serve Streamable HTTP instead of stdio (same as `--http [port]`).                                 |
+| `COOKIE_MCP_CORS_ORIGIN`                   | `*`                                   | Allowed browser origin for the HTTP server.                                                       |
+| `COOKIE_SLIPPAGE_BPS`                      | `500`                                 | Default slippage (bps).                                                                           |
+| `COOKIE_REFERRER`                          | `mcp treasury`                        | Referral wallet (MomoSwap only).                                                                  |
+| `SOLANA_RPC_URL`                           | `https://api.mainnet-beta.solana.com` | Solana RPC.                                                                                       |
+| `JUPITER_API_KEY`                          | —                                     | Optional; else keyless Jupiter at 0.5 req/s.                                                      |
+
+## Tools
+
+**Reads** (no key): `chain_health`, `get_pools`, `get_token_info`, `search_tokens` (resolve a token
+name/ticker to its mint), `get_quote`, `get_wallet` (which key this server signs with, and the RPC it
+uses — no RPC call, so it works when the chain is down), `get_balance`, `stake_info` (bCOOK liquid-staking rate / TVL /
+APY / fees), launchpad reads `get_launchpad_pools` / `get_launchpad_token` /
+`get_launchpad_positions`, and NFT reads
+`get_nft_listings`, `search_nfts` (resolve an NFT/collection name to a listed mint), `get_nft`,
+`get_wallet_nfts`, `get_nft_offers`, `get_nft_market_stats`, and `.cook` name reads
+`resolve_domain` / `get_owned_domains` / `get_domain_listings`.
+
+**Money** (need `COOKIE_PRIVATE_KEY`): `trade` (swap via Cookiebox or Cookiescan), `transfer` (COOK or any token,
+with an optional `memo` written through the SPL Memo program — the way to pay an invoice or payment
+request that matches transfers by memo), `stake` / `unstake` (COOK ⇄ bCOOK liquid staking).
+
+**Limit orders** ([Cookiebox](https://cookiebox.app/trade) limit-order escrow, program `L1M1tk…`):
+`get_limit_orders` lists a wallet's resting orders with no key (yours, or any address / `.cook` name);
+`place_limit_order` and `cancel_limit_order` need `COOKIE_PRIVATE_KEY`. An order locks the input in a
+program-owned reserve; a keeper fills it through the same router `trade` uses, so any pair with a route
+can rest as an order, and pays the pinned output account (partial fills possible). Two kinds:
+
+- **`limit`** (default) is a take-profit: fills at the price **or better**. The price must sit above
+  the current rate.
+- **`stop`** is a stop-loss, **stop-market**: `price` is the trigger, which must sit below the current
+  rate; once the executable rate falls to it the keeper sells at market and passes the proceeds
+  through. A hidden on-chain floor (50% below the trigger, `floorPrice` to override) only caps what a
+  compromised keeper key could pay — it is not what you receive.
+
+The only fee is the program's **maker fee, 10 bps at launch**, deducted from each fill and read live
+from chain (`fees` in `get_limit_orders`). Orders default to a one-week expiry (`expiresInSeconds`,
+`0` = good-til-cancelled, max one year); an **expired order still holds its input until it is
+cancelled**. Native COOK is wrapped inside the placement and refunded as COOK on cancel.
+
+> ⚠️ **The aggregator builds the transaction; this server verifies it before signing.** Every
+> instruction is decoded against the program IDL and checked — fee payer, maker, amounts, kind,
+> expiry, the pinned refund / payout accounts, the order PDA, and that only the five expected
+> programs are touched (escrow, compute budget, system, token, associated-token). A build that
+> disagrees with the request is refused with nothing signed. `place_limit_order` also refuses an
+> order that would fill or trigger immediately against the router's current rate (use `trade`), and a
+> pair with no route at all, unless `skipMarketCheck: true`. Prices go to the API as decimal
+> **strings**; a number that would print in exponent form is refused rather than rounded.
+
+**Launchpad** (need `COOKIE_PRIVATE_KEY`, [MomoSwap](https://momoswap.fun)): `deploy_token` launches a
+token on a COOK bonding curve (a logo is **required** — pass `imageBase64` and it is pinned to IPFS, or
+set `noLogo: true` to launch without one; the metadata is immutable, so a logo cannot be added later.
+Costs the launchpad creation fee, read from its config at call time, plus any
+`devBuyCook`), `launchpad_buy` / `launchpad_sell` trade that curve, `claim_launchpad`
+settles a position (the real SPL token after graduation, a Fair-mode refund, or a Jackpot/Survivor payout),
+and `claim_creator_fees` sweeps the creator's share of trading fees from a launch you created.
+
+> ⚠️ **Before graduation, holdings are program-tracked curve shares, not SPL tokens** — they do not
+> appear in `get_balance` and `trade` cannot route them. Exit with `launchpad_sell`, or claim the real
+> token with `claim_launchpad` once the pool graduates; from then on it trades like any other token.
+
+Because those shares are invisible to `get_balance`, **`get_launchpad_positions`** is the portfolio
+view: every launch a wallet has a position in, what it is worth on a live curve, and what is unclaimed
+(tokens after graduation, a Fair-mode refund, a settlement payout, creator fees or vesting). It reads
+the `UserPosition` accounts straight from the chain in batches, so it costs about one RPC round trip
+per 100 launches. Pass `owner` for any wallet, or omit it for your own.
+
+A pre-graduation token also has no DEX pool at all, so `get_quote` / `trade` would just report "no
+route". They now recognise that case and point at the launchpad tools instead, and `get_token_info`
+adds a `launchpad` field when a mint shows no price or liquidity because it is still on a curve.
+
+**Liquidity** (need `COOKIE_PRIVATE_KEY`): `create_pool`, `add_liquidity`, `remove_liquidity`,
+`claim_fees` (Cookiebox DAMM v2, Cookiebox CLMM, and CookieSwap BAMM, venue auto-detected),
+`lock_liquidity` (Cookiebox DAMM v2 and Cookiebox CLMM, permanent and irreversible — CLMM locks the
+whole position; fees stay claimable either way). Concentrated-liquidity venues (CLMM / BAMM) open a
+full-range position by default.
+
+**NFT marketplace** (need `COOKIE_PRIVATE_KEY`, [Baked Bazaar](https://bakedbazaar.art)): `buy_nft`,
+`list_nft`, `cancel_listing`, `make_offer`, `accept_offer`, `cancel_offer`. Built on the Cookie Chain
+Metaplex Auction House (1% marketplace fee + creator royalties); every action is built and signed
+locally.
+
+**Bridge** (need `COOKIE_PRIVATE_KEY`): `bridge` moves COOK 1:1 between Cookie Chain and Solana mainnet
+over the [Hyperlane](https://hyperlane.cookiescan.io) warp route (`direction` = `cookie-to-solana` |
+`solana-to-cookie`). One source-chain signature dispatches the transfer; a relayer delivers on the far
+side in a few minutes — check with `bridge_status` (a read, by Hyperlane message id). Cookie native COOK
+is 9-decimal; Solana COOK is a 6-decimal Token-2022 mint — amounts are in COOK either way. Simulates
+first, and **preflights the destination's collateral**: the route releases from a fixed collateral
+account on the far side (Cookie's native-collateral PDA / the Solana escrow), and a transfer larger than
+it holds would lock your funds on the source chain behind an undeliverable message — source-chain
+simulation cannot see that, so `bridge` reads the far side and refuses before signing. The result
+reports that collateral as `destinationCollateral`. On `cookie-to-solana` it also makes sure the
+recipient can actually receive: the delivery credits an SPL associated token account, and if the
+recipient has none, `bridge` **creates it from your wallet first** (one extra Solana tx, ~0.0021 SOL of
+account rent, which the recipient can reclaim by closing the account) and confirms it before dispatching
+— so a failure there costs nothing. The warp route can create that account itself, but pays from a PDA
+funded once at deploy time; when it runs dry the relayer's delivery fails _in simulation_, never reaches
+the chain, and the transfer hangs with no error anywhere (this happened on 2026-08-26). Pass
+`createRecipientAccount: false` to rely on that PDA instead — then `bridge` refuses when it is provably
+dry. The result reports the account as `recipientTokenAccount`.
+`get_balance` with `chain: "solana"` shows the Solana side before you bridge — the wallet's SPL
+COOK (what `solana-to-cookie` spends) and its SOL, which pays that transfer's fee and interchain gas;
+that view is COOK + SOL only and does not enumerate other Solana tokens.
+**Swap on Solana** (`get_quote` / `trade` with `chain: "solana"`): routes **Solana mainnet** liquidity
+through [Jupiter](https://jup.ag) instead of Cookie Chain — how you buy or sell the bridged SPL COOK
+(`36ZrtQoab5MhhySaP1YSTwUahSk6GRVUTtZ6cuVfm9e1`) once it is on the far side. Same non-custodial shape as
+every other swap: Jupiter quotes and builds, we simulate on your Solana RPC, sign locally, send, confirm.
+Fees are paid in **SOL**, and the **same `COOKIE_PRIVATE_KEY` signs on both chains** — run `get_wallet`
+first. Two things to know:
+
+- **Scoped to COOK on purpose.** One leg must be the SPL COOK mint, so `SOL → COOK` and
+  `COOK → USDC` work while an unrelated pair like `SOL → USDC` is refused. Jupiter would route it;
+  this server is for Cookie Chain, and every extra pair is surface that can move funds.
+- **`So1111…112` is COOK on Cookie Chain but wSOL on Solana** — the identical mint string, a different
+  asset. Token metadata is resolved per chain, and the `aggregator` parameter (Cookie Chain only) is
+  rejected rather than ignored when `chain: "solana"`.
+- **`trade` refuses the public Solana endpoint.** Quotes need no RPC at all, but a swap does, and
+  `api.mainnet-beta.solana.com` rate-limits `sendTransaction` hardest — a send that lands late against
+  your slippage cap _fails_. Point `SOLANA_RPC_URL` at a dedicated RPC (a free Helius/Triton/QuickNode
+  key is enough).
+
+The mainnet warp-route program ids ship as defaults, so `bridge` works
+out of the box — override `COOKIE_WARP_PROGRAM_ID` / `SOLANA_WARP_PROGRAM_ID` only for a different
+deployment.
+
+**`.cook` names** ([CookOven](https://book.cookoven.xyz)): `resolve_domain` looks a name up — owner,
+registration date, resolver/metadata pointers — or reports it as available with the live price;
+`get_owned_domains` lists every name a wallet holds and which is its primary. Writes need
+`COOKIE_PRIVATE_KEY`: `register_domain`, `set_primary_domain` (or `clear: true` to unset),
+`transfer_domain`, `update_domain`. Everything is read and built straight from the on-chain registry —
+no API, no indexer. The suffix is optional everywhere: `chef` and `chef.cook` are the same name.
+
+Once you own a name you can use it instead of an address: `transfer`, `get_balance`,
+`get_wallet_nfts`, `get_nft_offers`, `get_launchpad_positions` and `transfer_domain` all accept a
+`.cook` name wherever they take a Cookie Chain wallet. A plain base58 address costs no extra lookup.
+
+**`.cook` domain marketplace** ([CookOven Marketplace](https://market.cookoven.xyz)): the secondary
+market for names that are already registered — often cheaper than the 15,000–35,000 COOK registration,
+and the only way to get a name somebody else already owns. `get_domain_listings` browses it with no key
+(filter by `name`, `seller`, `maxPriceCook` or `maxLength`; sort by price, length or recency) and
+reports the live marketplace fee, which the seller pays out of the sale price. Writes need
+`COOKIE_PRIVATE_KEY`: `list_domain` (asking price in COOK), `buy_domain`, `cancel_domain_listing`.
+Read and built straight from the program — no API, no indexer.
+
+> ⚠️ **Listing escrows the name.** `list_domain` hands the domain to the marketplace's escrow account
+> in the same instruction, so while it is listed the registry reports the escrow as its owner: the
+> seller cannot `transfer_domain`, `update_domain` or `set_primary_domain` on it, and it stops
+> resolving to a payable address. Those tools say so explicitly rather than reporting a stranger as the
+> owner, and passing a listed name where an address is expected is **refused** — the escrow is a
+> program account, so paying it would strand the funds. `cancel_domain_listing` reverses a listing at
+> any time and refunds its rent. There is no re-price instruction: cancel, then list again.
+>
+> `buy_domain` requires `maxPriceCook` for the same reason `register_domain` does — the instruction
+> carries no price argument, so that cap is the only guard. Without it you get the asking price
+> quoted back and nothing is spent.
+
+Use the COOK / native mint `So11111111111111111111111111111111111111112` for COOK. Every tool returns
+JSON; failures return `{ error, hint }` — never a stack trace, never your key.
+
+## Hosted / wallet-signed mode
+
+The default setup assumes you are both the operator and the user. A hosted product — a web chat, a
+Telegram bot, a shared agent — cannot hold users' keys and should not ask for them. For that,
+cookie-mcp runs **without any key** and lets the user's own wallet sign:
+
+```bash
+COOKIE_SIGNER=external npx cookie-mcp --http 3000 --host 0.0.0.0
+```
+
+- Every request names the wallet it acts for with an `x-cookie-wallet: <base58>` header (or set
+  `COOKIE_WALLET_ADDRESS` for a single-wallet deployment). Reads work as before.
+- Every money-moving tool runs **all** of its checks — instruction decoding, spend refusals, the
+  simulation — and then, instead of signing, returns a normal (non-error) result:
+
+  ```json
+  {
+    "status": "needs_signature",
+    "tool": "transfer",
+    "kind": "transaction",
+    "what": "transfer",
+    "signer": "FFWf…4wq2",
+    "transactionBase64": "AQAAAA…",
+    "version": "legacy",
+    "blockhash": "6FdF…TSvT",
+    "lastValidBlockHeight": 24638662,
+    "submit": { "via": "cookie-rpc" },
+    "step": "final",
+    "summary": { "to": "…", "symbol": "COOK", "amount": "0.001" },
+    "next": "sign transactionBase64 with wallet … then call submit_signed_tx …"
+  }
+  ```
+
+  Your app hands `transactionBase64` to the browser wallet **unchanged** (it is already co-signed by
+  any ephemeral or API-side signers), then calls **`submit_signed_tx`** with the signed bytes and the
+  same `submit` / `blockhash` / `lastValidBlockHeight` / `what` fields. It sends on the named route
+  (Cookie RPC, Solana RPC, or Candy Shop) and confirms. It refuses bytes that still lack a signature
+  and never builds transactions itself.
+
+- `step: "intermediate"` marks a prerequisite (wrapping COOK for a dev buy, creating a Solana token
+  account before a bridge, CLMM tick-array init). After it confirms, call the same tool again with the
+  same arguments to continue.
+- `kind: "message"` (only `deploy_token`, for the launchpad login) asks the wallet to `signMessage`
+  the exact text; call `deploy_token` again with `loginSignature: { message, signature }`.
+- Blockhashes expire in about a minute. If the wallet prompt is slow, `submit_signed_tx` reports the
+  timeout with the signature and a "do not retry blindly" hint; re-run the tool for fresh bytes.
+- The HTTP server is stateless (one fresh server per POST), answers `/healthz`, and sends permissive
+  CORS headers so a browser front-end can call it directly. It **refuses to start** with a local
+  `COOKIE_PRIVATE_KEY` unless `COOKIE_HTTP_ALLOW_LOCAL_KEY=1`, because anyone reaching the port could
+  spend from that key.
+
+**As a library.** The same flows are importable without MCP:
+
+```ts
+import {
+  ExternalSigner,
+  transfer,
+  submitSignedTransaction,
+  runWithRequestContext,
+} from "cookie-mcp";
+import { createServer } from "cookie-mcp/server"; // embed the MCP server in your own process
+```
+
+Money functions resolve their signer from `COOKIE_SIGNER` + the request context
+(`runWithRequestContext({ wallet }, () => transfer({...}))`) and throw `SignatureRequired` with the
+same payload the tool returns. Local agents (`COOKIE_PRIVATE_KEY`, stdio) are unaffected by any of this.
+
+## Safety
+
+Non-custodial: no remote key storage. With a local key it stays in `COOKIE_PRIVATE_KEY`, signs locally,
+and is redacted from all output. In hosted mode the process holds no key at all and the user's wallet
+signs. Read-only until a signer is configured; every money-moving action is simulated before it is
+sent (or handed out for signing).
+
+## Development
+
+```bash
+yarn install
+yarn test    # lint + format + typecheck + unit tests + boot smoke
+yarn mcp     # run the server on stdio from source (tsx)
+yarn build   # bundle to dist/ (CLI, `cookie-mcp/server` factory, `cookie-mcp` library)
+```
+
+To point an agent at a local checkout instead of the published package, set the command to
+`npx tsx /ABS/PATH/cookie-mcp/src/mcp/server.ts`. `--http [port]` serves Streamable HTTP instead.
+
+## License
+
+This project is licensed under the terms of the MIT license. See the [LICENSE](./LICENSE) file.

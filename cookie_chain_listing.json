@@ -1,0 +1,88 @@
+{
+  "id": "d777e3ce-3942-4d2f-ab9a-3793327e389f",
+  "title": "Create an App on Cookie Chain",
+  "slug": "create-an-app-on-cookie-chain-app",
+  "description": "<p class=\"text-node\"></p><img src=\"https://res.cloudinary.com/dgvnuwspr/image/upload/v1780925510/listing-description/rzukqcsfsqwpyoqgy4bx.webp\" alt=\"\" title=\"\" width=\"584\" height=\"195\" id=\"i6iiaqjwr\" filename=\"1500x500.jpg\" filetype=\"image/jpeg\"><h2 class=\"heading-node\">Build a cApp on Cookie Chain</h2><p class=\"text-node\">Create an innovative <strong>cApp (Cookie App)</strong> on <strong>Cookie Chain</strong> and showcase the power of a fast, community-driven SVM ecosystem.</p><p class=\"text-node\">Cookie Chain is built for experimentation, rapid iteration, and on-chain culture. With <strong>sub-second finality</strong>, <strong>minimal transaction fees</strong>, <strong>Solana compatibility</strong>, and <strong>program deployments costing only a few cents</strong>, builders can ship quickly without worrying about infrastructure costs.</p><p class=\"text-node\">Your application should leverage Cookie Chain's infrastructure, wallet connectivity, and on-chain interactions. You can also integrate tools like <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://cookiebox.app/\"><strong>Cookiebox</strong></a>, <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://cookieswap.fun/\"><strong>Cookieswap</strong></a>, <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"http://api.cookiescan.io\"><strong>api.cookiescan.io</strong></a>, and<strong> </strong><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://github.com/cookiechain/cookie-mcp\"><strong>cookie-mcp</strong></a> for liquidity, trading, analytics, or market-related functionality.</p><p class=\"text-node\">Projects can span virtually any category:</p><ul class=\"list-node\"><li><p class=\"text-node\">DeFi</p></li><li><p class=\"text-node\">Gaming</p></li><li><p class=\"text-node\">Social platforms</p></li><li><p class=\"text-node\">Creator tools</p></li><li><p class=\"text-node\">Marketplaces</p></li><li><p class=\"text-node\">Analytics dashboards</p></li><li><p class=\"text-node\">AI-powered applications</p></li><li><p class=\"text-node\">Bots &amp; automation</p></li><li><p class=\"text-node\">Public goods</p></li><li><p class=\"text-node\">Developer tooling</p></li></ul><p class=\"text-node\"><strong>Build something useful.<br>Build something fun.<br>Build something degenerate.<br>We want to see epic creations.</strong></p><hr><h2 class=\"heading-node\">🎁 Why Build on Cookie Chain?</h2><ul class=\"list-node\"><li><p class=\"text-node\">Fast, Solana-compatible SVM infrastructure</p></li><li><p class=\"text-node\">Sub-second transaction finality</p></li><li><p class=\"text-node\">Extremely low transaction fees</p></li><li><p class=\"text-node\">Program deployments costing approximately <strong>$0.05</strong></p></li><li><p class=\"text-node\">Builder-friendly environment for rapid experimentation</p></li><li><p class=\"text-node\">Community-owned and community-operated ecosystem</p></li><li><p class=\"text-node\">Support for SPL Tokens, Token-2022, Metaplex, and familiar Solana tooling</p></li></ul><hr><h2 class=\"heading-node\">🎯 Objective</h2><p class=\"text-node\">Build a web application that demonstrates meaningful interaction with Cookie Chain.</p><p class=\"text-node\">Your application must allow users to:</p><ul class=\"list-node\"><li><p class=\"text-node\">Connect a wallet (<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://nightly.app/\"><strong>Nightly</strong></a> support is required)</p></li><li><p class=\"text-node\">Interact with on-chain functionality on Cookie Chain</p></li><li><p class=\"text-node\">Execute transactions and receive real-time feedback</p></li><li><p class=\"text-node\">View application-specific data and activity</p></li><li><p class=\"text-node\">Access analytics, charts, or dashboards where relevant</p></li><li><p class=\"text-node\">Utilize existing Cookie Chain programs for liquidity, swaps, trading, or tokenized assets (where applicable)</p></li><li><p class=\"text-node\">Receive clear transaction status updates</p></li></ul><h3 class=\"heading-node\">Required Features</h3><ul class=\"list-node\"><li><p class=\"text-node\">Wallet connection functionality</p></li><li><p class=\"text-node\">Display connected wallet address</p></li><li><p class=\"text-node\">Transaction execution</p></li><li><p class=\"text-node\">Transaction confirmation handling</p></li><li><p class=\"text-node\">Error handling and user feedback</p></li></ul><hr><h2 class=\"heading-node\">🛠 Core Application Ideas</h2><p class=\"text-node\">Examples include:</p><ul class=\"list-node\"><li><p class=\"text-node\">DeFi protocols</p></li><li><p class=\"text-node\">Prediction markets</p></li><li><p class=\"text-node\">Creator platforms</p></li><li><p class=\"text-node\">On-chain games</p></li><li><p class=\"text-node\">AI-powered dApps</p></li><li><p class=\"text-node\">Trading platforms</p></li><li><p class=\"text-node\">Analytics dashboards</p></li><li><p class=\"text-node\">Social applications</p></li><li><p class=\"text-node\">Bots and automation tools</p></li><li><p class=\"text-node\">Public goods</p></li><li><p class=\"text-node\">Developer tooling</p></li></ul><p class=\"text-node\">The key requirement is demonstrating meaningful on-chain interaction with Cookie Chain.</p><hr><h2 class=\"heading-node\">🍪 Optional Cookie Ecosystem Integrations</h2><p class=\"text-node\">Additional integrations are encouraged where relevant:</p><ul class=\"list-node\"><li><p class=\"text-node\">Token launches</p></li><li><p class=\"text-node\">Liquidity pool creation</p></li><li><p class=\"text-node\">Swaps and trading functionality</p></li><li><p class=\"text-node\">Market making</p></li><li><p class=\"text-node\">Asset management</p></li><li><p class=\"text-node\">Trading dashboards</p></li><li><p class=\"text-node\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://cookiebox.app/\">Cookiebox</a></p></li><li><p class=\"text-node\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://cookieswap.fun/\">Cookieswap</a></p></li><li><p class=\"text-node\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://api.cookiescan.io/\">Cookie DAS API</a></p></li><li><p class=\"text-node\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://cookiescan.io/\">CookieScan</a></p></li><li><p class=\"text-node\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://github.com/cookiechain/cookie-mcp\">cookie-mcp</a></p></li></ul><hr><h2 class=\"heading-node\">⚙️ Technical Requirements</h2><ul class=\"list-node\"><li><p class=\"text-node\">Must be built on <strong>Cookie Chain (SVM)</strong></p></li><li><p class=\"text-node\">Use Cookie Chain SDKs and infrastructure where applicable</p></li><li><p class=\"text-node\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://cookiebox.app/\">Cookiebox</a>, <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://cookieswap.fun/\">Cookieswap</a>, <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://api.cookiescan.io/\">Cookie DAS</a> and <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://github.com/cookiechain/cookie-mcp\">cookie-mcp</a> integrations are encouraged</p></li><li><p class=\"text-node\">Application must be deployed and publicly accessible</p></li><li><p class=\"text-node\">Source code must be open source</p></li><li><p class=\"text-node\">Include a comprehensive README with setup instructions</p></li></ul><hr><h2 class=\"heading-node\">📦 Submission Requirements</h2><p class=\"text-node\">Submit the following:</p><ul class=\"list-node\"><li><p class=\"text-node\">Live application URL</p></li><li><p class=\"text-node\">GitHub repository</p></li><li><p class=\"text-node\">Relevant program, contract, token, or application addresses (if applicable)</p></li></ul><hr><h2 class=\"heading-node\">🎥 Demo Requirements</h2><p class=\"text-node\">Create an <strong>X (Twitter) thread</strong> that:</p><ul class=\"list-node\"><li><p class=\"text-node\">Explains what your application does</p></li><li><p class=\"text-node\">Demonstrates how users can use it</p></li><li><p class=\"text-node\">Includes a guide directing users to the Cookie Chain Bridge where relevant</p></li></ul><p class=\"text-node\"><strong>Final Step:</strong> Share your X thread in the Cookie Chain Telegram community.</p><hr><h2 class=\"heading-node\">📚 Resources</h2><ul class=\"list-node\"><li><p class=\"text-node\">Cookie Chain Homepage: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://www.cookiechain.wtf/\">https://www.cookiechain.wtf</a></p></li><li><p class=\"text-node\">Cookie Chain Documentation: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://docs.cookiechain.wtf/\">https://docs.cookiechain.wtf</a></p></li><li><p class=\"text-node\">Cookie Chain API Documentation: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://api.cookiescan.io/\">https://api.cookiescan.io</a></p></li><li><p class=\"text-node\">Cookie Chain RPC Endpoint: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://rpc.cookiescan.io/\">https://rpc.cookiescan.io</a></p></li><li><p class=\"text-node\">Telegram: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://t.me/TheCookieNetChain\">https://t.me/TheCookieNetChain</a></p></li><li><p class=\"text-node\">Discord: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://discord.gg/XqnStmWgNu\">https://discord.gg/XqnStmWgNu</a></p></li><li><p class=\"text-node\">X: <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"link\" href=\"https://x.com/TheCookieChain\">https://x.com/TheCookieChain</a></p></li></ul><p class=\"text-node\"></p>",
+  "deadline": "2026-09-22T21:59:59.000Z",
+  "commitmentDate": "2026-09-28T18:29:59.000Z",
+  "eligibility": [
+    {
+      "type": "link",
+      "order": 3,
+      "optional": false,
+      "question": "Live application URL"
+    },
+    {
+      "type": "link",
+      "order": 1,
+      "optional": false,
+      "question": "GitHub repository"
+    },
+    {
+      "type": "text",
+      "order": 2,
+      "optional": false,
+      "question": "Relevant program, contract, token, or application addresses (if applicable)"
+    }
+  ],
+  "status": "OPEN",
+  "token": "USDC",
+  "rewardAmount": 1000,
+  "rewards": {
+    "1": 500,
+    "2": 500
+  },
+  "maxBonusSpots": 0,
+  "sponsorId": "29c0d87c-052c-496e-849e-b783099ad0b1",
+  "isPublished": true,
+  "skills": [
+    {
+      "skills": "Frontend",
+      "subskills": [
+        "React"
+      ]
+    },
+    {
+      "skills": "Backend",
+      "subskills": []
+    },
+    {
+      "skills": "Blockchain",
+      "subskills": [
+        "Rust"
+      ]
+    }
+  ],
+  "type": "bounty",
+  "requirements": null,
+  "isWinnersAnnounced": false,
+  "region": "Global",
+  "pocSocials": "t.me/TheCookieNetChain",
+  "publishedAt": "2026-09-04T18:18:54.040Z",
+  "isPrivate": false,
+  "agentAccess": "HUMAN_ONLY",
+  "hackathonId": null,
+  "compensationType": "fixed",
+  "maxRewardAsk": null,
+  "minRewardAsk": null,
+  "isFndnPaying": false,
+  "winnersAnnouncedAt": null,
+  "isPro": false,
+  "sponsor": {
+    "name": "Cookie Chain",
+    "logo": "https://res.cloudinary.com/dgvnuwspr/image/upload/v1780402072/earn-sponsor/pnrlmf7wvcqxittgsoan.webp",
+    "slug": "cookiechain",
+    "url": "https://cookiechain.wtf",
+    "entityName": "The Cookie Chain",
+    "isVerified": false,
+    "isCaution": false
+  },
+  "poc": {
+    "id": "90aa16f5-da4c-42b7-9edf-86f9f7611ca7",
+    "firstName": "Short",
+    "lastName": "the Banks",
+    "username": "shortthebanks",
+    "photo": "https://res.cloudinary.com/dgvnuwspr/image/upload/v1780402019/earn-pfp/ywkan1gqrehmskicldfa.webp"
+  },
+  "Hackathon": null
+}

@@ -1,0 +1,55 @@
+Created At: 2026-09-17T14:24:40+08:00
+Completed At: 2026-09-17T14:24:42+08:00
+
+The command exited with code 0.
+Output:
+Total Superteam listings: 24
+01. [BOUNTY] $5002 USDG | Create a Short Video Explainer for Hisa: $5000 up for grabs.
+    Deadline: 2026-09-25T22:59:59.000Z | Slug: create-a-short-video-explainer-for-hisa-dollar5000-up-for-grabs
+02. [BOUNTY] $250 USDG | Design a T-Shirt for Superteam Türkiye Inspired by Colosseum/Crypto World's Fair
+    Deadline: 2026-09-18T20:59:59.999Z | Slug: design-a-t-shirt-for-superteam-turkiye-inspired-by-colosseumcrypto-worlds-fair
+03. [BOUNTY] $500 USDC | Solana Summit Video Challenge
+    Deadline: 2026-09-19T22:59:59.999Z | Slug: summitvideos
+04. [BOUNTY] $500 USDC | Trade, Tweet & Earn
+    Deadline: 2026-09-20T18:29:59.000Z | Slug: trade-tweet-and-earn-1
+05. [BOUNTY] $500 USDC | Steve Agent Arena: Launch Your Agent & Win 500 USDC
+    Deadline: 2026-09-20T21:59:59.000Z | Slug: steve-agent-arena-launch-your-agent-and-win-500-usdc
+06. [BOUNTY] $500 USDC | Show the world SOLARA — Content + Seeker dApp reviews
+    Deadline: 2026-09-21T16:59:59.000Z | Slug: show-the-world-solara-content-seeker-dapp-reviews-1
+07. [BOUNTY] $1000 USDG | IDEATHON | Submit Innovative Ideas for the Hackathon
+    Deadline: 2026-09-21T20:59:59.000Z | Slug: ideathon-submit-innovative-ideas-for-the-hackathon
+08. [BOUNTY] $2000 USDC | Trade on KriptoK League and Share Your Round Experience | $2,000 USDC
+    Deadline: 2026-09-21T20:59:59.000Z | Slug: kriptok-league-trading-experience-bounty
+09. [BOUNTY] $10000 USDG | Solana Summit Canada Creator Challenge - part 1
+    Deadline: 2026-09-22T05:59:59.000Z | Slug: solana-summit-canada-creator-challenge-part-1
+10. [BOUNTY] $7000 USDC | BAXUS Creators: Film Real Vending Machine Spins
+    Deadline: 2026-09-22T06:59:59.000Z | Slug: baxus-creators-film-real-vending-machine-spins
+11. [BOUNTY] $1000 USDC | Create an App on Cookie Chain
+    Deadline: 2026-09-22T21:59:59.000Z | Slug: create-an-app-on-cookie-chain-app
+12. [BOUNTY] $500 USDC | Build and Demo a Mermail Agent Skill
+    Deadline: 2026-09-23T13:59:59.000Z | Slug: build-and-demo-a-mermail-agent-skill
+13. [BOUNTY] $320 USDG | Business Track Milestone — Pitch Deck & Checkpoint
+    Deadline: 2026-09-23T21:59:59.000Z | Slug: business-track-milestone-pitch-deck-and-checkpoint
+14. [BOUNTY] $1000 USDC | Spout Finance Product Feedback
+    Deadline: 2026-09-23T22:59:59.000Z | Slug: product-feedback-spout-finance
+15. [BOUNTY] $500 USDG | Diseña el Merch Oficial de El Encuentro 2026
+    Deadline: 2026-09-24T22:59:59.000Z | Slug: disena-el-merch-oficial-de-el-encuentro-2026
+16. [BOUNTY] $200 USDG | Record X Video Reaction to Solana Ecosystem News
+    Deadline: 2026-09-24T22:59:59.000Z | Slug: record-x-video-reaction-to-solana-ecosystem-news
+17. [BOUNTY] $1000 USDG | NectarFi x Dominion Market
+    Deadline: 2026-09-28T22:59:59.000Z | Slug: nectarfi-x-dominion-market
+18. [PROJECT] $None USDC | Trading Content Partner for KriptoK League | 2-Month Project
+    Deadline: 2026-09-30T20:59:59.000Z | Slug: kriptok-league-trading-content-partner
+19. [BOUNTY] $500 USDC | Create a post about Stealf
+    Deadline: 2026-09-30T21:59:59.000Z | Slug: stealf-bounty
+20. [BOUNTY] $300 USDC | Create X Thread About Moony Tips With Flipcash
+    Deadline: 2026-10-01T06:59:59.000Z | Slug: moonyfoundationtipcards
+21. [BOUNTY] $300 USDC | Introduce Web3 Projects to Segmento
+    Deadline: 2026-10-06T21:59:59.999Z | Slug: introduce-web3-projects-to-segmento
+22. [BOUNTY] $1000 USDC | Road to Colosseum | Builders Reflect & Share
+    Deadline: 2026-10-12T16:59:00.000Z | Slug: road-to-colosseum-builders-reflect-and-share
+23. [BOUNTY] $1700 USDG | Pitch & Demo Your Project at Demo Day in Kyiv
+    Deadline: 2026-10-15T20:59:59.000Z | Slug: pitch-and-demo-your-project-at-demo-day-in-kyiv
+24. [BOUNTY] $800 USDG | Pitch & Demo Your Product at Online Demo Day
+    Deadline: 2026-10-15T20:59:59.000Z | Slug: pitch-and-demo-your-product-at-online-demo-day
+

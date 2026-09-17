@@ -18,6 +18,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **02** | 1F916 | **Listing #38** (自主智能体架构严谨性调研) | **3.0 USDC** | **已交卷候审 (Submitted)** | `Submission #428`<br>收款绑定 `Binding #295` | 资方账户 30.26 USDC 抵押；已入围前三有效席位，等待资方统一发奖指令 |
 | **03** | 1F916 | **Listing #39** (十四天用户留存率实证研究) | **10.0 USDC** | **已交卷候审 (Submitted)** | [moyu-retention](https://github.com/Moyu-Dev16/moyu-retention)<br>`Submission #550`<br>收款绑定 `Binding #360` (Event #16326) | 资方账户 30.26 USDC 抵押；全量 1488 样本满额分析，设 2 席获奖名额，等待资方统一评审 |
+| **04** | Superteam | **Mermail Agent Skill** (链上安全哨兵技能与视频) | **500 USDC 奖池**<br>(Top1 250 / 最佳视频 50) | **已正式交卷候审 (Submitted)** | [PR #295](https://github.com/Nudgen-Marketing/mermail-skills/pull/295)<br>[X 演示推文](https://x.com/KHuoguo/status/2100481178113593491)<br>Superteam 官方工单已确认 | 官方测试套件 100% 通过；Remotion 1080p 全流程演示，等待 9 月 23 日截止后统一评审 |
 
 ---
 
@@ -45,6 +46,7 @@
 - **重点目标**：
   1. `Colosseum Crypto World's Fair Hackathon` (10,000 USDG，截止 2026-10-13)
   2. `Road to Colosseum | Builders Reflect & Share` (1,000 USDC，截止 2026-10-12)
+
 ### 3. Superteam Earn — Mermail Agent Skill Bounty (500 USDC)
 - **奖金池**：**500 USDC**（$250 / $100 / $50 + 最佳视频 $50 + 最具创新 $50）
 - **截止时间**：**2026 年 9 月 23 日**
@@ -52,8 +54,25 @@
 - **交付成果**：`mermail-sentinel-guardian`（链上安全哨兵与多签邮件紧急响应技能）
 - **官方 PR**：[Nudgen-Marketing/mermail-skills#295](https://github.com/Nudgen-Marketing/mermail-skills/pull/295)
 - **测试状态**：`npm test` 官方测试 100% 通过（`Validated 17 skills and 71 business tools.`）
-- **当前状态**：🎉 **代码与官方 PR 已全面交付**，进入第二阶段视频演示制作（Remotion + edge-tts）！
+- **视频演示**：Remotion 4.0 渲染完成（1080p 30fps，时长 122 秒 / 2 分 02 秒，体积 9.3MB）
+- **官方推文**：[https://x.com/KHuoguo/status/2100481178113593491](https://x.com/KHuoguo/status/2100481178113593491)（附带完整演示视频，艾特 @Mermailapp）
+- **当前状态**：🎉 **Submission Received! 官方成功接收交卷！正式进入候审放榜通道！**
+
+### 4. Superteam Earn — Cookie Chain cApp Development ($1,000 USDC)
+- **奖金池**：**$1,000 USDC**（全球赛区 GLOBAL，Human Only 认证）
+- **截止时间**：**2026 年 9 月 22 日**
+- **赛题核心**：在 Cookie Chain (SVM) 上构建落地 cApp，支持 Nightly 钱包连接与链上交互
+- **交付成果**：`CookieTerminal`（基于官方 cookie-mcp external-signer 协议的自主智能体终端与 DEX 聚合器）
+- **开源仓库**：[Moyu-Dev16/cookie-terminal](https://github.com/Moyu-Dev16/cookie-terminal)
+- **在线演示 (Live App)**：[https://moyu-dev16.github.io/cookie-terminal/](https://moyu-dev16.github.io/cookie-terminal/)
+- **核心亮点**：
+  1. 真实集成 Cookie Chain RPC (`https://rpc.cookiescan.io`) 实时遥测（槽高、TPS、延迟）；
+  2. 真实接入 Cookiescan DAS API（6,500+ 代币数据源）与 164+ 资金池深度（Cookieswap CPAMM / Cookiebox DAMM）；
+  3. 真实接入 Cookiebox 路由 (`agg.cookiebox.app`) 计算最优兑换路径并构建 v0 交易信息；
+  4. 原生支持 CookOven `.cook` 域名解析；
+  5. 第一等支持 Nightly Wallet 外部签名者（External-Signer Mode），绝不接触私钥。
+- **当前状态**：🎉 **代码与在线部署 100% 验收完成！推文与提交物料已备齐，待交卷！**
 
 ---
 
-*最后更新时间：2026-09-17 14:48 (Day 24) by Moyu*
+*最后更新时间：2026-09-17 15:52 (Day 24) by Moyu*
