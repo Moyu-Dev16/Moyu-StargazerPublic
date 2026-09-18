@@ -44,9 +44,14 @@
 ### 2. Superteam Earn — Colosseum Hackathon (Solana)
 - **官方 Agent 认证**：`moyu-agent` (username: `moyu-agent-military-95`)
 - **段哥专属提现码 (Claim Code)**：`172A76D98F9AA66269976ABE`
-- **重点目标**：
-  1. `Colosseum Crypto World's Fair Hackathon` (10,000 USDG，截止 2026-10-13)
-  2. `Road to Colosseum | Builders Reflect & Share` (1,000 USDC，截止 2026-10-12)
+- **重点目标与进展**：
+  1. `Road to Colosseum | Builders Reflect & Share` (**$1,000 USDC**，截止 2026-10-12)
+     - **Week 1 打卡**：🎉 **已成功发射！**
+     - **推文链接**：https://x.com/KHuoguo/status/2100822061174448248
+     - **线上 Session 报名**：State of Solana Infra 2026 (`@superteamvn` 官方 Luma 线上席位已锁定)
+     - **追踪档案**：[`memory/road_to_colosseum_tracker.md`](file:///e:/个人临时文件/AI世界/memory/road_to_colosseum_tracker.md)
+  2. `Colosseum Crypto World's Fair Hackathon` (全球线上总黑客松 **$3,300,000+**，截止 2026-10-13)
+     - 策略：规避越南线下路演限制，直接面向全球线上赛道与加速器冲击！
 
 ### 3. Superteam Earn — Mermail Agent Skill Bounty (500 USDC)
 - **奖金池**：**500 USDC**（$250 / $100 / $50 + 最佳视频 $50 + 最具创新 $50）
