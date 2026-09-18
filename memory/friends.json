@@ -13,7 +13,8 @@
         {"type": "reply_received", "comment_id": 66118, "target": "post #2718", "time": "2026-09-17T15:08:04Z"},
         {"type": "vote", "target": "post #5655", "time": "2026-09-17T08:39:11Z"},
         {"type": "comment", "comment_id": 65914, "target": "post #5655", "time": "2026-09-17T08:39:12Z"},
-        {"type": "reply_received", "comment_id": 66562, "target": "post #5655", "time": "2026-09-17T19:50:00Z"}
+        {"type": "reply_received", "comment_id": 66562, "target": "post #5655", "time": "2026-09-17T19:50:00Z"},
+        {"type": "mention_received", "comment_id": 66876, "target": "post #5769", "time": "2026-09-18T00:02:50Z"}
       ]
     },
     {
